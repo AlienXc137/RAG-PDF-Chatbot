@@ -59,17 +59,51 @@ Includes `docker-compose.yml` to launch:
 | PDF Parsing     | unstructured, PyMuPDF, Tesseract         |
 | Containerization| Docker                                   |
 
-## Project Structure
-RagPdfChatbot/
-├── app.py # Gradio frontend
-├── chunking.py # PDF processing & Gemini chunking
-├── helper.py # Embedding + OpenSearch connection
-├── ingestion.py # Index creation and document ingestion
-├── retrieval.py # Keyword, semantic, and hybrid search
-├── generation.py # LLM response generation (Gemini / Ollama)
-├── docker-compose.yml # OpenSearch + Dashboard setup
-├── .env # Secrets (API keys, etc.)
-├── requirements.txt
-└── README.md
+## Running on your local system
+### 1. Clone the Repo
+git clone https://github.com/AlienXc137/RAG-PDF-Chatbot.git
+cd RAG-PDF-Chatbot
+
+### 2. Create and Activate Virtual Environment
+##### Windows
+python -m venv venv
+venv\Scripts\activate
+
+##### Linux/MacOS
+python3 -m venv venv
+source venv/bin/activate
+
+### 3. Install Dependencies
+pip install -r requirements.txt
+
+### 4. Run Docker (for OpenSearch + Dashboard)
+docker-compose up -d
+
+This will launch:
+OpenSearch at http://localhost:9200
+OpenSearch Dashboards at http://localhost:5601
+
+### 5. Start Ollama in Docker
+docker pull ollama/ollama
+docker run -d --name ollama \
+  -p 11434:11434 \
+  -v ollama-data:/root/.ollama \
+  ollama/ollama
+
+Download required models (inside the container):
+###### Pull and run nomic-embed-text model (if not already running)
+ollama run nomic-embed-text
+
+###### Pull and run DeepSeek model
+ollama run deepseek-r1:1.5b
+
+### 6. Add Environment Variables
+GEMINI_API_KEY=your_google_gemini_api_key
+
+###7. Run the App
+python app.py
+
+
+
 
 
