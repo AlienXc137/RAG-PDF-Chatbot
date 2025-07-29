@@ -1,0 +1,8 @@
+unstructured[pdf] 
+python-dotenv
+google-generativeai
+opensearch-py
+langchain
+gradio
+pymupdf
+requests
