@@ -61,18 +61,17 @@ Includes `docker-compose.yml` to launch:
 
 ## Running on your local system
 ### 1. Clone the Repo
-`git clone https://github.com/AlienXc137/RAG-PDF-Chatbot.git`
-`cd RAG-PDF-Chatbot`
+```bash
+git clone https://github.com/AlienXc137/RAG-PDF-Chatbot.git
+cd RAG-PDF-Chatbot
+```
 
 ### 2. Create and Activate Virtual Environment
 ##### Windows
-`python -m venv venv`
-`venv\Scripts\activate`
-
-##### Linux/MacOS
-`python3 -m venv venv`
-`source venv/bin/activate`
-
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
 ### 3. Install Dependencies
 `pip install -r requirements.txt`
 
@@ -84,11 +83,13 @@ OpenSearch at http://localhost:9200
 OpenSearch Dashboards at http://localhost:5601
 
 ### 5. Start Ollama in Docker
-`docker pull ollama/ollama
+```bash
+docker pull ollama/ollama
 docker run -d --name ollama \
   -p 11434:11434 \
   -v ollama-data:/root/.ollama \
-  ollama/ollama`
+  ollama/ollama
+```
 
 Download required models (inside the container):
 ###### Pull and run nomic-embed-text model (if not already running)
